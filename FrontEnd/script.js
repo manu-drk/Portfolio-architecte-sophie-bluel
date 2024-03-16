@@ -1,40 +1,50 @@
-let listProjects = window.sessionStorage.getItem("listProjects");
+
+let works = window.sessionStorage.getItem("works");
 
 const reponse = await fetch('http://localhost:5678/api/works');
-listProjects = await reponse.json();
+works = await reponse.json();
 
+let listFiltres = window.sessionStorage.getItem("listFiltres");
 
+const response = await fetch('http://localhost:5678/api/categories');
+listFiltres = await response.json();
+
+const listFiltresSet = new Set();
 //  Afficher les projets
-async function genererProjets(listProjects){
+async function genererProjets(listProjects){}
 
-// récupération élements du dom
 
-    const sectionPortfolio = document.querySelector(".gallery");
-    sectionPortfolio.innerHTML = ""
-
-    for (let i = 0; i < listProjects.length; i++) {
-
-        const works = listProjects[i];
-
-        // création de la balise figure
-        const projectElement = document.createElement("figure");
-        projectElement.classList.add("figureGallery")
-        projectElement.dataset.index = works.id
+    const displayWorks = () => {
+        const gallery = document.querySelector('.gallery');
+        const galleryWorks = works.map(work => {
+            return `
+        <figure>
+        <img src="${work.imageUrl}" alt="${work.title}">
+        <figurecaption>${work.title}"</figurecaption>
+        </figure>
     
-        // création des images
-        const titleElement = document.createElement("figcaption");
-        titleElement.innerText = works.title;
+        `;
+        }).join('')
+        gallery.innerHTML = galleryWorks
+    };
+    displayWorks();
 
-        const imageElement = document.createElement("img");
-        imageElement.src = works.imageUrl;
 
-        
-        
-        sectionPortfolio.appendChild(projectElement);
 
-        projectElement.appendChild(imageElement);
-        projectElement.appendChild(titleElement);
-       
-    }
-}
-await genererProjets(listProjects);
+
+listFiltres.forEach(function(listFiltre) {
+    
+
+    let button = document.createElement('button');
+    button.classList.add('boutonFiltre');
+    button.textContent = listFiltre.name;
+    button.dataset.id = listFiltre.id;
+    document.querySelector('.filtres').appendChild(button);
+    
+
+   
+    button.addEventListener('click', event => {
+        let filtered = listFiltre.id === 0 ? works : works.filter(work => listFiltre.id === work.listFiltreId);
+        displayWorks(filtered);
+    })
+});
