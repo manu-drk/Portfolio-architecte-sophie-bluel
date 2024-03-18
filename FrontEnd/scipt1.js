@@ -98,3 +98,25 @@
     //     let filtered = listFiltre.id === 0 ? listProjects : listProjects.filter(listProject => listFiltre.id === listProject.listFiltreId);
     //     genererProjets(filtered);
     // })
+
+    //  Afficher les projets
+// async function genererProjets(listProjects){}
+ // button.addEventListener('click', function () {
+// const listFiltre.id = button.dataset.id;
+  // button.addEventListener('click', event => {
+        // const œuvresFiltrées = listFiltre.id === 0 ? works : works.filter(work => listFiltre.id === work.categoryId);
+    //     let filtered = listFiltre.id === 0 ? works : works.filter(work => listFiltre.id === work.listFiltreId);
+    //     displayWorks(filtered);
+    // })
+
+    
+// //const boutonsFiltre = document.querySelectorAll('.boutonFiltre');
+// boutonsFiltre.forEach(button => {
+//     button.addEventListener('click', function () {
+       
+//         const filtreId = button.dataset.id;
+        
+//         const filtered = filtreId === 0 ? works : works.filter(work => work.listFiltreId === filtreId);
+       
+//         displayWorks(filtered);
+// })
