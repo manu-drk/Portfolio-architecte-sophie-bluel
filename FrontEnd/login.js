@@ -1,3 +1,7 @@
+// const retour = await fetch("http://localhost:5678/api/users/login");
+// const userLogin = await retour.json();
+// window.localStorage.setItem(userLogin)
+
 // On récupère une référence au formulaire HTML
 const form = document.getElementById("login");
 
@@ -20,4 +24,6 @@ const userLogin = {
        headers: { "Content-Type": "application/json" },
        body: chargeUtile
    });
+   
+   sessionStorage.setItem("token", userLoginId.token);
 })

@@ -1,5 +1,4 @@
 
-
 let works = window.sessionStorage.getItem("works");
 
 const reponse = await fetch('http://localhost:5678/api/works');
@@ -14,10 +13,9 @@ const categoriesSet = new Set();
 
 
 
-    const displayWorks = (filtered = []) => {
-        let tabImg = filtered?.length ? filtered : works;
+    const displayWorks = () => {
         const gallery = document.querySelector('.gallery');
-        const galleryWorks = tabImg.map(work => {
+        const galleryWorks = works.map(work => {
             return `
         
         <figure data-id="${work.categoryId}">
@@ -50,8 +48,11 @@ const categoriesSet = new Set();
     const boutonsFiltre = document.querySelectorAll('.boutonFiltre');
     boutonsFiltre.forEach(button => {
         button.addEventListener('click', function () {
+           
             const filtreId = button.dataset.id;
-            const filtered = filtreId == 0 ? works : works.filter(work => work.category.id == filtreId);
+            
+            const filtered = filtreId === 0 ? works : works.filter(work => work.filtreId === filtreId);
+           
             displayWorks(filtered);
     })
 })
