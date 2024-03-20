@@ -164,6 +164,9 @@ li:hover {
 	
 
 }
+.filtres [data-id="0"] {
+	padding: 10px 22px;
+}
 .filtres [data-id="1"] {
 	padding: 10px 22px;
 }
