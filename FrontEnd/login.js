@@ -6,27 +6,34 @@
 const form = document.getElementById("login");
 
 // On ajoute un gestionnaire d'évènement 'submit'
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async(event) => {
   event.preventDefault();
-const userLogin = {
+  const userLogin = {
     email: event.target.querySelector("[name=email").value,
     password: event.target.querySelector("[name=mdp]").value,
- };
+  };
 
- console.log(userLogin);
+  console.log(userLogin);
 
- 
- // Création de la charge utile au format JSON
-   const chargeUtile = JSON.stringify(userLogin);
-   // Appel de la fonction fetch avec toutes les informations nécessaires
-   fetch("http://localhost:5678/api/users/login", {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       body: chargeUtile
-   });
-   
-   sessionStorage.setItem("token", userLogin.token);
+
+  // Création de la charge utile au format JSON
+  const chargeUtile = JSON.stringify(userLogin);
+  // Appel de la fonction fetch avec toutes les informations nécessaires
+  let loginId = await fetch("http://localhost:5678/api/users/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: chargeUtile
 
   
+  }) 
+  loginId = await loginId.json()
+
+console.log(loginId);
+
+  localStorage.setItem("token", userLogin.token);
+
+  window.location.href = "http://127.0.0.1:5501/FrontEnd/index.html"
+
+
 
 })
