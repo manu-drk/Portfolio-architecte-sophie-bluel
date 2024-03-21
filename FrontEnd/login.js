@@ -32,8 +32,37 @@ console.log(loginId);
 
   localStorage.setItem("token", userLogin.token);
 
-  window.location.href = "http://127.0.0.1:5501/FrontEnd/index.html"
+  // window.location.href = "http://127.0.0.1:5501/FrontEnd/index.html"
 
-
+  if (localStorage.token) {window.location.href = "http://127.0.0.1:5501/FrontEnd/index.html";
+  } else { 
+    alert("Email ou mot de passe incorrect");
+  }
 
 })
+
+
+//   } else(localStorage.token === 401) {
+//     alert("Email ou mot de passe incorrect");
+//   }
+  // if (localStorage.token) {
+  //   // Code to execute if there's a valid token (assumed)
+  // } else if (localStorage.token) {
+  //   alert("Une erreur est survenue lors de l'authentification (An error occurred during authentication)");
+  //   // Or redirect to login page, etc.
+  // }
+
+
+// 
+
+  // .then((response) => {
+  //   if (response.status === 200) {
+  //     window.location.assign("http://127.0.0.1:5500/FrontEnd/index.html");
+  //   } else if (response.status === 404) {
+  //     alert("Email ou mot de passe incorrect");
+  //   } else if (response.status === 401) {
+  //     alert("Email ou mot de passe incorrect");
+  //   }
+  //   // On transforme la promesse du serv en format JSON
+  //   return response.json();
+  // })

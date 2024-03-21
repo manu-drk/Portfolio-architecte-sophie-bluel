@@ -1,6 +1,6 @@
-if(localStorage.token)[
-    alert("Ok")
-]
+// if(localStorage.token)[
+//     alert("Ok")
+// ]
 
 let works = window.sessionStorage.getItem("works");
 
