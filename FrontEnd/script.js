@@ -92,3 +92,19 @@ function login(token) {
     
        
   };
+  // Ces lignes affichent un bouton modifier dans la section introduction si l'utilisateur est connectÃ©
+if (token) {
+  const topbar = document.querySelector('header');
+  const header = document.createElement('div');
+  header.id = 'topbarLogin';
+  const texteHeader = document.createElement('p');
+  texteHeader.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>Mode édition';
+  // const boutonHeader = document.createElement('button');
+  // boutonHeader.innerHTML = 'Publier les changements';
+
+
+
+  topbar.prepend(header);
+  header.appendChild(texteHeader)
+  
+}
