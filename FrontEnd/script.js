@@ -1,6 +1,7 @@
 // if(localStorage.token)[
 //     alert("Ok")
 // ]
+var token = localStorage.getItem("token");
 
 let works = window.sessionStorage.getItem("works");
 
@@ -64,3 +65,30 @@ boutonsFiltre.forEach(button => {
     })
 })
 
+// Ces lignes changent le texte "login" en "logout" si l'utilisateur est connecté
+
+function login(token) {
+    if (token) {
+      document.getElementById("bouton_login").innerText = "logout";
+      
+    } else {
+      document.getElementById("bouton_login").innerText = "login";
+    }
+  }
+  login(token);
+  
+  function deco(token) {
+    if (token) {
+      localStorage.removeItem("token");
+      login(token);
+     
+    }
+  }
+  const logout = document.getElementById("bouton_login");
+  logout.onclick = (token) => {
+    deco(token);
+    localStorage.removeItem("editMode");
+    // logout.href = "http://127.0.0.1:5501/FrontEnd/index.html";
+    
+       
+  };
