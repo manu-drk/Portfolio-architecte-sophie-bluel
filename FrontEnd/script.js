@@ -42,7 +42,7 @@ const tousLesTavaux = {
 }
 // ajouter le bouton en début de tableau
 categories.unshift(tousLesTavaux);
-
+if (!token) {
 categories.forEach(function (categorie) {
 
 
@@ -64,7 +64,7 @@ boutonsFiltre.forEach(button => {
         displayWorks(filtered);
     })
 })
-
+}
 // Ces lignes changent le texte "login" en "logout" si l'utilisateur est connecté
 
 function login(token) {
@@ -102,9 +102,18 @@ if (token) {
   // const boutonHeader = document.createElement('button');
   // boutonHeader.innerHTML = 'Publier les changements';
 
-
-
-  topbar.prepend(header);
+   topbar.prepend(header);
   header.appendChild(texteHeader)
+
+  const navigation = document.getElementById('navigation');
+  navigation.style.paddingTop = '76px';
   
+  const sectionWorks = document.querySelector('#sectionProjet');
+  const modifierWorks = document.createElement('p');
+  modifierWorks.id = 'ouvrir-modale';
+  modifierWorks.innerHTML = '<a href="#modal"><i class="fa-solid fa-pen-to-square"></i>Modifier</a>';
+  sectionWorks.appendChild(modifierWorks);
+  modifierWorks.addEventListener('click', afficherModale);
 }
+
+// export {token, works, categories, displayWorks, modifierWorks};

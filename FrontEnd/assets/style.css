@@ -57,12 +57,16 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
-header {
+/* header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+} */
+#navigation {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
-
 #topbarLogin {
 	height: 60px;
 	display: flex;
@@ -220,6 +224,37 @@ li:hover {
 .gallery img {
 	width: 100%;
 
+}
+#sectionProjet {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+#sectionProjet h2,
+#sectionProjet p {
+	margin: 0;
+	margin-right: 30px;
+}
+
+#modale-fenetre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+    width: 630px;
+    height: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+#modale-fenetre h1 {
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 26px;
+	color: black;
+	justify-content: center;
 }
 #contact, #connexion {
 	width: 50%;
