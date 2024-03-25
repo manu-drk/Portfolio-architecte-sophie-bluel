@@ -106,14 +106,14 @@ if (token) {
   header.appendChild(texteHeader)
 
   const navigation = document.getElementById('navigation');
-  navigation.style.paddingTop = '76px';
+  navigation.style.paddingTop = '80px';
   
   const sectionWorks = document.querySelector('#sectionProjet');
   const modifierWorks = document.createElement('p');
-  modifierWorks.id = 'ouvrir-modale';
+  modifierWorks.id = 'ouvrir-modal';
   modifierWorks.innerHTML = '<a href="#modal"><i class="fa-solid fa-pen-to-square"></i>Modifier</a>';
   sectionWorks.appendChild(modifierWorks);
-  modifierWorks.addEventListener('click', afficherModale);
+  
 }
 
 // export {token, works, categories, displayWorks, modifierWorks};
