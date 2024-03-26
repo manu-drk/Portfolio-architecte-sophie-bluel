@@ -6,13 +6,26 @@ function afficherModal() {
   fenetreModal1.style.display = 'flex';
 }
 
+// const openModal = function (e) {
+//   e.preventDefault();
+//   const target = document.querySelector(e.target.getAttribute('href'));
+//   target.style.display = 'flex';
+//   modal = target;
+//   modal.addEventListener('click', closeModal);
+// };
+
+// Gestionnaire d'événements pour ouvrir la fenêtre modale
 const openModal = function (e) {
   e.preventDefault();
-  const target = document.querySelector(e.target.getAttribute('href'));
-  target.style.display = 'flex';
-  modal = target;
-  modal.addEventListener('click', closeModal);
+  afficherModal(); // Appel de la fonction afficherModal pour ouvrir la fenêtre modale
 };
+
+// Sélectionnez l'élément qui déclenche l'ouverture de la fenêtre modale
+const boutonOuvrirModal = document.querySelector('#ouvrir-modal');
+
+// Ajoutez un gestionnaire d'événements au bouton pour ouvrir la fenêtre modale
+boutonOuvrirModal.addEventListener('click', openModal);
+
 
 const closeModal = function (e) {
   if (modal === null) return;
