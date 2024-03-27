@@ -40,7 +40,8 @@ const tousLesTavaux = {
   id: 0,
   name: 'Tous',
 }
-// ajouter le bouton en début de tableau
+
+// **************   ajouter le bouton en début de tableau     ***********
 categories.unshift(tousLesTavaux);
 if (!token) {
   categories.forEach(function (categorie) {
@@ -55,6 +56,8 @@ if (!token) {
   })
 
 
+  // ******************** ajout de la partie filtre      **************
+
 
   const boutonsFiltre = document.querySelectorAll('.boutonFiltre');
   boutonsFiltre.forEach(button => {
@@ -65,7 +68,7 @@ if (!token) {
     })
   })
 }
-// Ces lignes changent le texte "login" en "logout" si l'utilisateur est connecté
+// ****************    texte "login" en "logout" si l'utilisateur est connecté **************
 
 function login(token) {
   if (token) {
@@ -92,15 +95,15 @@ logout.onclick = (token) => {
 
 
 };
-// Ces lignes affichent un bouton modifier dans la section introduction si l'utilisateur est connectÃ©
+// Ces lignes affichent un bouton modifier dans la section introduction si l'utilisateur est connecté
+
 if (token) {
   const topbar = document.querySelector('header');
   const header = document.createElement('div');
   header.id = 'topbarLogin';
   const texteHeader = document.createElement('p');
   texteHeader.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>Mode édition';
-  // const boutonHeader = document.createElement('button');
-  // boutonHeader.innerHTML = 'Publier les changements';
+ 
 
   topbar.prepend(header);
   header.appendChild(texteHeader)
@@ -117,6 +120,7 @@ if (token) {
 }
 
 
+// ***********      Modal      ****************
 
 const fenetreModal1 = document.querySelector('.modalEcran');
 
@@ -138,24 +142,33 @@ const openModal = function (e) {
   afficherModal(); // Appel de la fonction afficherModal pour ouvrir la fenêtre modale
 };
 
-// Sélectionnez l'élément qui déclenche l'ouverture de la fenêtre modale
+// *************       Ouverture de la fenêtre modale         ****************
+
 const boutonOuvrirModal = document.querySelector('#ouvrir-modal');
 
-// Ajoutez un gestionnaire d'événements au bouton pour ouvrir la fenêtre modale
+// ************** ecoute du bouton pour ouvrir la fenêtre modale    *************
+
 boutonOuvrirModal.addEventListener('click', openModal);
 
 
 const closeModal = function (e) {
   if (modal === null) return;
   e.preventDefault();
-  modal.style.display = "none"; // Utilisation de la bonne variable 'modal'
-  modal.removeEventListener('click', closeModal); // Changement de addEventListener à removeEventListener
+  modal.style.display = "none"; 
+  modal.removeEventListener('click', closeModal); 
   modal = null;
 };
 
 document.querySelectorAll('#ouvrir-modal').forEach(a => {
   a.addEventListener('click', openModal);
 });
+
+
+
+
+
+
+// **************   appel de la gallerie de l'API works    **************
 
 const modalGallery = document.querySelector('#galleryModal');
 
@@ -164,7 +177,7 @@ function genererListeModal(works) {
     const figureModal = document.createElement('figure');
     figureModal.dataset.id = work.id;
     figureModal.id = 'figure-modal';
-    modalGallery.appendChild(figureModal); // Ajout à modalGallery au lieu de grilleWorks
+    modalGallery.appendChild(figureModal); 
 
     const imageModal = document.createElement('img');
     imageModal.src = work.imageUrl;
