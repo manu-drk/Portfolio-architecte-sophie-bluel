@@ -183,10 +183,6 @@ function genererListeModal(works) {
     imageModal.src = work.imageUrl;
     figureModal.appendChild(imageModal);
 
-    const texteModal = document.createElement('figcaption');
-    texteModal.innerText = 'éditer';
-    figureModal.appendChild(texteModal);
-
     const divBoutons = document.createElement('div');
     divBoutons.id = 'boutons-modal';
     figureModal.appendChild(divBoutons);

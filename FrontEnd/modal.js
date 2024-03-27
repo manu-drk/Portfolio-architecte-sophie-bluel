@@ -17,7 +17,7 @@ function afficherModal() {
 // Gestionnaire d'événements pour ouvrir la fenêtre modale
 const openModal = function (e) {
   e.preventDefault();
-  afficherModal(); // Appel de la fonction afficherModal pour ouvrir la fenêtre modale
+  afficherModal(); 
 };
 
 // Sélectionnez l'élément qui déclenche l'ouverture de la fenêtre modale
@@ -30,8 +30,8 @@ boutonOuvrirModal.addEventListener('click', openModal);
 const closeModal = function (e) {
   if (modal === null) return;
   e.preventDefault();
-  modal.style.display = "none"; // Utilisation de la bonne variable 'modal'
-  modal.removeEventListener('click', closeModal); // Changement de addEventListener à removeEventListener
+  modal.style.display = "none"; 
+  modal.removeEventListener('click', closeModal); 
   modal = null;
 };
 
@@ -46,7 +46,7 @@ function genererListeModal(works) {
     const figureModal = document.createElement('figure');
     figureModal.dataset.id = work.id;
     figureModal.id = 'figure-modal';
-    modalGallery.appendChild(figureModal); // Ajout à modalGallery au lieu de grilleWorks
+    modalGallery.appendChild(figureModal); 
 
     const imageModal = document.createElement('img');
     imageModal.src = work.imageUrl;

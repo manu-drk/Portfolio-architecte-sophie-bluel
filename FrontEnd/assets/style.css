@@ -527,6 +527,15 @@ li:hover {
 	right: 6px;
 }
 
+#galleryModal p {
+	position: absolute;
+	color: white;
+	background: black;
+	padding: .15em;
+	border-radius: 5px;
+	top: 7px;
+	right: 1px;
+}
 
 #galleryModal figure .boutons-modal i {
 	height: 17px;
