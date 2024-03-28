@@ -73,28 +73,61 @@ if (!token) {
 function login(token) {
   if (token) {
     document.getElementById("bouton_login").innerText = "logout";
-
+    // logout.href = './index.html';
   } else {
     document.getElementById("bouton_login").innerText = "login";
   }
 }
 login(token);
 
-function deco(token) {
-  if (token) {
-    localStorage.removeItem("token");
-    login(token);
 
-  }
+
+// Fonction de déconnexion
+function deco() {
+  // Supprimer le token
+  localStorage.removeItem("token");
+
+  // Rediriger vers la page index.html
+  window.location.href = "index.html";
 }
-const logout = document.getElementById("bouton_login");
-logout.onclick = (token) => {
-  deco(token);
-  localStorage.removeItem("editMode");
-  // logout.href = "http://127.0.0.1:5501/FrontEnd/index.html";
+
+// Sélection de l'élément de déconnexion
+const logoutButton = document.getElementById("bouton_login");
+
+// Gestion de l'état du bouton lors du chargement de la page
+document.addEventListener("DOMContentLoaded", function() {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    // Si un token est présent, l'utilisateur est connecté, donc le bouton affiche "logout"
+    logoutButton.textContent = "logout";
+  } else {
+    // Si aucun token n'est présent, l'utilisateur n'est pas connecté, donc le bouton affiche "login"
+    logoutButton.textContent = "login";
+    logoutButton.href = "login.html"; // Mettre à jour l'URL du lien si nécessaire
+  }
+});
+
+// Ajout d'un gestionnaire d'événements pour le clic sur le bouton de déconnexion/login
+logoutButton.addEventListener("click", function(event) {
+  // Empêcher le comportement par défaut du lien (éviter de suivre le lien)
+  event.preventDefault();
+
+  // Vérifier si l'utilisateur est connecté ou déconnecté
+  const token = localStorage.getItem("token");
+  if (token) {
+    // Si l'utilisateur est connecté, déconnectez-le
+    deco();
+  } else {
+    // Si l'utilisateur est déconnecté, redirigez-le vers la page de connexion
+    window.location.href = "login.html";
+  }
+});
 
 
-};
+ 
+
+
 // Ces lignes affichent un bouton modifier dans la section introduction si l'utilisateur est connecté
 
 if (token) {
