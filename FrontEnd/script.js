@@ -200,7 +200,6 @@ document.querySelectorAll('#ouvrir-modal').forEach(a => {
 
 
 
-
 // **************   appel de la gallerie de l'API works    **************
 
 const modalGallery = document.querySelector('#galleryModal');
@@ -222,13 +221,20 @@ function genererListeModal(works) {
 
 
 
-    const boutonSupprimer = document.createElement('p');
+    const boutonSupprimer = document.createElement('button');
     boutonSupprimer.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    boutonSupprimer.id = 'bouton-supprimer';
     divBoutons.appendChild(boutonSupprimer);
 
-    figureModal.addEventListener('mouseover', event => {
-      boutonEditer.style.display = 'block';
-    });
+    //    figureModal.addEventListener('mouseover', event => {
+    //   boutonEditer.style.display = 'block';
+
+    // });
   });
 }
 genererListeModal(works);
+
+const button = document.createElement('button');
+    button.classList.add('bouton-ajouter');
+    button.textContent = "Ajouter une photo"
+    document.querySelector('#modal1').appendChild(button);
