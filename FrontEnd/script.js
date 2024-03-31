@@ -180,12 +180,7 @@ function afficherModal2(e) {
   afficherModal(fenetreModal2);
 }
 
-// Fonction pour fermer les modales
-function closeModal(e) {
-  e.preventDefault();
-  fenetreModal1.style.display = 'none';
-  fenetreModal2.style.display = 'none';
-}
+
 
 // Gestionnaires d'événements pour ouvrir les modales
 const boutonOuvrirModal1 = document.querySelector('#bouton-ouvrir-modal1');
@@ -194,18 +189,11 @@ boutonOuvrirModal1.addEventListener('click', afficherModal1);
 const boutonOuvrirModal2 = document.querySelector('#bouton-ouvrir-modal2');
 boutonOuvrirModal2.addEventListener('click', afficherModal2);
 
-// Gestionnaire d'événement pour fermer les modales
-const boutonFermerModal = document.querySelectorAll('.bouton-fermer');
-boutonFermerModal.forEach(bouton => {
-  bouton.addEventListener('click', closeModal);
-});
 
-// Gestionnaire d'événement pour le bouton "Ajouter"
-const boutonAjouter = document.createElement('button');
-boutonAjouter.classList.add('bouton-ajouter');
-boutonAjouter.textContent = 'Ajouter une photo';
-document.querySelector('#modal1').appendChild(boutonAjouter);
-boutonAjouter.addEventListener('click', afficherModal2); // Ouvre la modal 2
+    // Gestionnaire d'événement pour le bouton "Ajouter"
+    
+    const boutonAjouter = document.querySelector('#bouton-ouvrir-modal2');
+     boutonAjouter.addEventListener('click', afficherModal2); // Ouvre la modal 2
 
 // Fonction pour générer la liste d'éléments dans une modal
 function genererListeModal(works, modal) {
@@ -230,5 +218,28 @@ function genererListeModal(works, modal) {
     boutonSupprimer.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
     boutonSupprimer.id = 'bouton-supprimer';
     divBoutons.appendChild(boutonSupprimer);
+
   });
 }
+
+// Fonction pour fermer les modales
+function closeModal1(e) {
+  e.preventDefault();
+  fenetreModal1.style.display = 'none';
+}
+
+function closeModal2(e) {
+  e.preventDefault();
+  fenetreModal2.style.display = 'none';
+}
+
+// Gestionnaire d'événement pour fermer les modales
+const boutonsFermerModal1 = document.querySelectorAll('.bouton-fermer1');
+boutonsFermerModal1.forEach(bouton => {
+  bouton.addEventListener('click', closeModal1);
+});
+
+const boutonsFermerModal2 = document.querySelectorAll('.bouton-fermer2');
+boutonsFermerModal2.forEach(bouton => {
+  bouton.addEventListener('click', closeModal2);
+});
