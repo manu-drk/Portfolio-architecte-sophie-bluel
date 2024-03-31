@@ -82,7 +82,10 @@ login(token);
 
 
 
-// Fonction de déconnexion
+
+
+//************ Fonction de déconnexion ************
+
 function deco() {
   // Supprimer le token
   localStorage.removeItem("token");
@@ -95,22 +98,22 @@ function deco() {
 const logoutButton = document.getElementById("bouton_login");
 
 // Gestion de l'état du bouton lors du chargement de la page
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("token");
 
   if (token) {
-    // Si un token est présent, l'utilisateur est connecté, donc le bouton affiche "logout"
+    // Si l'utilisateur est connecté, on affiche "logout"
     logoutButton.textContent = "logout";
   } else {
-    // Si aucun token n'est présent, l'utilisateur n'est pas connecté, donc le bouton affiche "login"
+    // Si l'utilisateur n'est pas connecté, on affiche "login"
     logoutButton.textContent = "login";
-    logoutButton.href = "login.html"; // Mettre à jour l'URL du lien si nécessaire
+    logoutButton.href = "login.html";
   }
 });
 
 // Ajout d'un gestionnaire d'événements pour le clic sur le bouton de déconnexion/login
-logoutButton.addEventListener("click", function(event) {
-  // Empêcher le comportement par défaut du lien (éviter de suivre le lien)
+logoutButton.addEventListener("click", function (event) {
+
   event.preventDefault();
 
   // Vérifier si l'utilisateur est connecté ou déconnecté
@@ -125,10 +128,10 @@ logoutButton.addEventListener("click", function(event) {
 });
 
 
- 
 
 
-// Ces lignes affichent un bouton modifier dans la section introduction si l'utilisateur est connecté
+
+// Afficher la topbar si l'utilisateur est connecté
 
 if (token) {
   const topbar = document.querySelector('header');
@@ -136,7 +139,7 @@ if (token) {
   header.id = 'topbarLogin';
   const texteHeader = document.createElement('p');
   texteHeader.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>Mode édition';
- 
+
 
   topbar.prepend(header);
   header.appendChild(texteHeader)
@@ -153,7 +156,10 @@ if (token) {
 }
 
 
-// ***********      Modal      ****************
+// ******************************      Modals      ******************************
+
+
+
 // Définition des modales
 const fenetreModal1 = document.querySelector('.modalEcran');
 const fenetreModal2 = document.querySelector('.modalForm');
@@ -170,7 +176,7 @@ function afficherModal1(e) {
   e.preventDefault();
   fenetreModal2.style.display = 'none';
   afficherModal(fenetreModal1);
-  genererListeModal(works, fenetreModal1); // Générer la liste des éléments de la modal 1
+  genererListeModal(works, fenetreModal1); // Générer la liste dans la modal 1
 }
 
 // Fonction pour afficher la modal 2 et cacher la modal 1
@@ -190,12 +196,13 @@ const boutonOuvrirModal2 = document.querySelector('#bouton-ouvrir-modal2');
 boutonOuvrirModal2.addEventListener('click', afficherModal2);
 
 
-    // Gestionnaire d'événement pour le bouton "Ajouter"
-    
-    const boutonAjouter = document.querySelector('#bouton-ouvrir-modal2');
-     boutonAjouter.addEventListener('click', afficherModal2); // Ouvre la modal 2
+// Gestionnaire d'événement pour le bouton "Ajouter"    
+const boutonAjouter = document.querySelector('#bouton-ouvrir-modal2');
+boutonAjouter.addEventListener('click', afficherModal2); // Ouvre la modal 2
 
-// Fonction pour générer la liste d'éléments dans une modal
+
+
+//********** Fonction pour générer la liste d'éléments dans une modal **********
 function genererListeModal(works, modal) {
   const modalGallery = modal.querySelector('#galleryModal');
   modalGallery.innerHTML = '';
@@ -204,7 +211,7 @@ function genererListeModal(works, modal) {
     const figureModal = document.createElement('figure');
     figureModal.dataset.id = work.id;
     figureModal.id = 'figure-modal';
-    modalGallery.appendChild(figureModal); 
+    modalGallery.appendChild(figureModal);
 
     const imageModal = document.createElement('img');
     imageModal.src = work.imageUrl;
@@ -222,7 +229,9 @@ function genererListeModal(works, modal) {
   });
 }
 
-// Fonction pour fermer les modales
+
+
+//********** Fonction pour fermer les modales **********
 function closeModal1(e) {
   e.preventDefault();
   fenetreModal1.style.display = 'none';
@@ -243,3 +252,4 @@ const boutonsFermerModal2 = document.querySelectorAll('.bouton-fermer2');
 boutonsFermerModal2.forEach(bouton => {
   bouton.addEventListener('click', closeModal2);
 });
+

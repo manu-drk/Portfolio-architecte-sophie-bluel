@@ -119,7 +119,10 @@ ul {
 #bouton_login {
 	text-decoration: none;
 }
-
+#bouton-login, #bouton-login:visited, 
+#bouton-logout, #bouton-logout:visited {
+	color: black;
+}
 blockquote,
 q {
 	quotes: none;
@@ -227,9 +230,7 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
-	color: #B1663C;
-}
+
 
 #introduction {
 	display: flex;
@@ -340,7 +341,9 @@ li:hover {
 	margin-right: 30px;
 }
 
-
+#bouton-ouvrir-modal1 a {
+	text-decoration: none;
+}
 
 
 
@@ -383,23 +386,25 @@ li:hover {
 	justify-content: center;
 	align-items: center;
 	right: 8px;
-	top: 18px;	
+	top: 18px;
 	height: 25px;
 	width: 25px;
 	position: absolute;
 	border: none;
 	background: white;
 }
+
 #modal1 .bouton-fermer1 i {
-		
+
 	height: 25px;
 	width: 25px;
-	
+
 }
+
 #modal1 .bouton-fermer1:hover {
-		
+
 	transform: scale(1.30);
-	
+
 }
 
 #modal1 h1 {
@@ -413,6 +418,7 @@ li:hover {
 	margin-top: 50px;
 	/* margin: 30px auto; */
 }
+
 /* #galleryModal {
 	position: relative;
 	align-items: center;
@@ -505,27 +511,29 @@ li:hover {
 	width: 17px;
 	color: white;
 }
-hr {
+
+#modal1 hr {
 	width: 70%;
 	color: #b3b3b3;
 	/* height: 1.2px; */
 	size: 1.2px;
-	 margin-top: 47px;
+	margin-top: 47px;
 	/*margin-bottom: 32px; */
 	/* margin: 35px 35px; */
 }
+
 #modal1 .bouton-ajouter {
-    font-family: 'Syne';
-    font-weight: 700;
-    color: white;
-    background-color: #1D6154;
-    margin: auto;
-    margin-bottom: 37px;
-    width: 210px;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: auto;
+	margin-bottom: 37px;
+	width: 210px;
 	height: 35px;
-    text-align: center;
-    border-radius: 60px;
-    border: none;
+	text-align: center;
+	border-radius: 60px;
+	border: none;
 }
 
 
@@ -546,7 +554,7 @@ hr {
 #modal2 {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
 	overflow: auto;
 	width: 630px;
 	height: 690px;
@@ -562,19 +570,21 @@ hr {
 	justify-content: center;
 	align-items: center;
 	right: 8px;
-	top: 18px;	
+	top: 18px;
 	height: 25px;
 	width: 25px;
 	position: absolute;
 	border: none;
 	background: white;
 }
+
 #modal2 .bouton-fermer2 i {
-		
+
 	height: 25px;
 	width: 25px;
-	
+
 }
+
 #modal2 h1 {
 	font-family: 'Work Sans';
 	font-weight: 400;
@@ -583,43 +593,92 @@ hr {
 	justify-content: center;
 	margin: 30px auto;
 }
+
 .hidden {
-    display: none;
+	display: none;
 }
-.fenetre-ajout  {
+
+.fenetre-ajout {
 	height: 170px;
 	width: 420px;
-    margin: auto;
-    margin-top: 20px;
-    background-color: #e8f1f7;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    /* padding: 50px 160px; */
+	margin: 50px auto;
+	margin-top: 20px;
+	background-color: #e8f1f7;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	border-radius: 3px;
+	/* padding: 50px 160px; */
 }
+
 #modal2 .logoAjout i {
 	font-size: 76px;
 
 }
+
 label[for="input-photo"] {
 	margin-top: 6px;
-    border-radius: 50px;
-    color: #306685;
-    background-color: #CBD6DC;
-    padding: 12px 40px;
-    font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    text-align: center;
+	border-radius: 50px;
+	color: #306685;
+	background-color: #CBD6DC;
+	padding: 12px 40px;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
 }
+
 #modal2 p {
 	margin-top: 10px;
 	font-size: 10px;
 }
 
+#modal2 .bouton-valider {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: auto;
+	margin-bottom: 37px;
+	width: 210px;
+	height: 35px;
+	text-align: center;
+	border-radius: 60px;
+	border: none;
+}
+
+#ajout-form {
+	width: 420px;
+	margin: auto;
+}
+
+#title-texte,
+#categorie {
+	height: 50px;
+	margin: 10px 0px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#ajout-form {
+	text-align: left;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#modal2 hr {
+	width: 100%;
+	color: #b3b3b3;
+	size: 1.2px;
+	margin-top: 47px;
+	margin-bottom: 32px;
+
+}
 
 /* *************************** Contact *************************** */
 #contact,
