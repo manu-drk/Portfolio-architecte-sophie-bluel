@@ -146,65 +146,72 @@ if (token) {
 
   const sectionWorks = document.querySelector('#sectionProjet');
   const modifierWorks = document.createElement('p');
-  modifierWorks.id = 'ouvrir-modal';
-  modifierWorks.innerHTML = '<a href="#modal"><i class="fa-solid fa-pen-to-square"></i>Modifier</a>';
+  modifierWorks.id = 'bouton-ouvrir-modal1';
+  modifierWorks.innerHTML = '<a href="#modal1"><i class="fa-solid fa-pen-to-square"></i>Modifier</a>';
   sectionWorks.appendChild(modifierWorks);
 
 }
 
 
 // ***********      Modal      ****************
-
+// Définition des modales
 const fenetreModal1 = document.querySelector('.modalEcran');
+const fenetreModal2 = document.querySelector('.modalForm');
 
-function afficherModal() {
-  fenetreModal1.style.display = 'flex';
+// Fonction pour afficher une modal spécifique
+function afficherModal(modal) {
+  fenetreModal1.style.display = 'none';
+  fenetreModal2.style.display = 'none';
+  modal.style.display = 'flex';
 }
 
-// const openModal = function (e) {
-//   e.preventDefault();
-//   const target = document.querySelector(e.target.getAttribute('href'));
-//   target.style.display = 'flex';
-//   modal = target;
-//   modal.addEventListener('click', closeModal);
-// };
-
-// Gestionnaire d'événements pour ouvrir la fenêtre modale
-const openModal = function (e) {
+// Fonction pour afficher la modal 1 et cacher la modal 2
+function afficherModal1(e) {
   e.preventDefault();
-  afficherModal(); // Appel de la fonction afficherModal pour ouvrir la fenêtre modale
-};
+  fenetreModal2.style.display = 'none';
+  afficherModal(fenetreModal1);
+  genererListeModal(works, fenetreModal1); // Générer la liste des éléments de la modal 1
+}
 
-// *************       Ouverture de la fenêtre modale         ****************
-
-const boutonOuvrirModal = document.querySelector('#ouvrir-modal');
-
-// ************** ecoute du bouton pour ouvrir la fenêtre modale    *************
-
-boutonOuvrirModal.addEventListener('click', openModal);
-
-
-const closeModal = function (e) {
-  if (modal === null) return;
+// Fonction pour afficher la modal 2 et cacher la modal 1
+function afficherModal2(e) {
   e.preventDefault();
-  modal.style.display = "none"; 
-  modal.removeEventListener('click', closeModal); 
-  modal = null;
-};
+  fenetreModal1.style.display = 'none';
+  afficherModal(fenetreModal2);
+}
 
-document.querySelectorAll('#ouvrir-modal').forEach(a => {
-  a.addEventListener('click', openModal);
+// Fonction pour fermer les modales
+function closeModal(e) {
+  e.preventDefault();
+  fenetreModal1.style.display = 'none';
+  fenetreModal2.style.display = 'none';
+}
+
+// Gestionnaires d'événements pour ouvrir les modales
+const boutonOuvrirModal1 = document.querySelector('#bouton-ouvrir-modal1');
+boutonOuvrirModal1.addEventListener('click', afficherModal1);
+
+const boutonOuvrirModal2 = document.querySelector('#bouton-ouvrir-modal2');
+boutonOuvrirModal2.addEventListener('click', afficherModal2);
+
+// Gestionnaire d'événement pour fermer les modales
+const boutonFermerModal = document.querySelectorAll('.bouton-fermer');
+boutonFermerModal.forEach(bouton => {
+  bouton.addEventListener('click', closeModal);
 });
 
+// Gestionnaire d'événement pour le bouton "Ajouter"
+const boutonAjouter = document.createElement('button');
+boutonAjouter.classList.add('bouton-ajouter');
+boutonAjouter.textContent = 'Ajouter une photo';
+document.querySelector('#modal1').appendChild(boutonAjouter);
+boutonAjouter.addEventListener('click', afficherModal2); // Ouvre la modal 2
 
+// Fonction pour générer la liste d'éléments dans une modal
+function genererListeModal(works, modal) {
+  const modalGallery = modal.querySelector('#galleryModal');
+  modalGallery.innerHTML = '';
 
-
-
-// **************   appel de la gallerie de l'API works    **************
-
-const modalGallery = document.querySelector('#galleryModal');
-
-function genererListeModal(works) {
   works.forEach(work => {
     const figureModal = document.createElement('figure');
     figureModal.dataset.id = work.id;
@@ -219,22 +226,9 @@ function genererListeModal(works) {
     divBoutons.id = 'boutons-modal';
     figureModal.appendChild(divBoutons);
 
-
-
     const boutonSupprimer = document.createElement('button');
     boutonSupprimer.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
     boutonSupprimer.id = 'bouton-supprimer';
     divBoutons.appendChild(boutonSupprimer);
-
-    //    figureModal.addEventListener('mouseover', event => {
-    //   boutonEditer.style.display = 'block';
-
-    // });
   });
 }
-genererListeModal(works);
-
-const button = document.createElement('button');
-    button.classList.add('bouton-ajouter');
-    button.textContent = "Ajouter une photo"
-    document.querySelector('#modal1').appendChild(button);
